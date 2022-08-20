@@ -1,5 +1,6 @@
 import { Container } from 'react-bootstrap';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { CartRouter } from '../../cart/routes/CartRouter';
 import { ProductsRouter } from '../../products/routes/ProductsRouter';
 import { StationsRouter } from '../../stations/routes/StationsRouter';
 import { NavBar } from '../components/NavBar';
@@ -12,6 +13,7 @@ export const DashboardRouter = () => {
       <Container>
         <Routes>
           <Route path="/" element={<DashboardPage />} />
+          <Route path="/cart/*" element={<CartRouter />} />
           <Route path="products/*" element={<ProductsRouter />} />
           <Route path="stations/*" element={<StationsRouter />} />
           <Route path="/*" element={<Navigate to="/" />} />
