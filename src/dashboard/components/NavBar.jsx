@@ -8,39 +8,37 @@ import { Link } from 'react-router-dom';
 import { logout } from '../../store/auth/authSlice';
 
 export const NavBar = () => {
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-	const cerrarSesion = () => {
-		dispatch(logout());
-	}; 
+  const cerrarSesion = () => {
+    dispatch(logout());
+  };
 
-	return (
-		<Navbar  sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
-			<Container>
-			<Navbar.Brand as={Link} to="/">
-				SuraApp
-			</Navbar.Brand>
+  return (
+    <Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand as={Link} to="/">
+          SuraApp
+        </Navbar.Brand>
 
-			<Nav className="ms-auto ms-lg-0 me-2">
-				<Nav.Link accessKey='1'  as={Link} to="/cart">
-					Carrito
-				</Nav.Link>
-			</Nav>
+        <Nav className="ms-auto ms-lg-0 me-2">
+          <Nav.Link as={Link} to="/cart">
+            Carrito
+          </Nav.Link>
+        </Nav>
 
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-			<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link eventKey="2" as={Link} to="/products">
+              Productos
+            </Nav.Link>
 
-			<Navbar.Collapse id="responsive-navbar-nav">
-				<Nav className="me-auto">
-
-					<Nav.Link accessKey='2' as={Link} to="/products">
-					Productos
-					</Nav.Link>
-
-					<Nav.Link accessKey='3' as={Link} to="/stations">
-					Entrega en Estaciones
-					</Nav.Link>
-					{/* <NavDropdown
+            <Nav.Link eventKey="3" as={Link} to="/stations">
+              Entrega en Estaciones
+            </Nav.Link>
+            {/* <NavDropdown
 								title="Pendientes Por Condición"
 								id="collasible-nav-dropdown"
 								>
@@ -52,21 +50,20 @@ export const NavBar = () => {
 								Separated link
 								</NavDropdown.Item>
 							</NavDropdown> */}
-				</Nav>
+          </Nav>
 
-				<Nav className="d-flex align-items-end align-items-lg-center">
-					<span className="text-info me-0 me-lg-3 sm">Tommy López</span>
-					<Button
-					onClick={cerrarSesion}
-					variant={'outline-primary'}
-					className="mt-2 mt-lg-0"
-					>
-					Salir
-					</Button>
-				</Nav>
-			</Navbar.Collapse>
-
-			</Container>
-		</Navbar>
-	);
+          <Nav className="d-flex flex-row justify-content-end align-items-center">
+            <span className="text-info me-3">Tommy López</span>
+            <Button
+              onClick={cerrarSesion}
+              variant={'outline-primary'}
+              className="mt-2 mt-lg-0"
+            >
+              Salir
+            </Button>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 };
