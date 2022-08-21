@@ -63,8 +63,12 @@ export const productsSlice = createSlice({
 		activeProduct: {
 			id: null,
          name: null,
+			amount: "1",
+			observations: "",
 			haveColors: false,
 			haveSizes: false,
+			color: {},
+			size: {},
 		},
 	},
 
@@ -75,7 +79,35 @@ export const productsSlice = createSlice({
 			state.activeProduct.haveColors = action.payload.haveColors;
 			state.activeProduct.haveSizes = action.payload.haveSizes;
 		},
+		updateActiveProductColor:( state, action ) => {
+			state.activeProduct.color = action.payload;
+		},
+		updateActiveProductSize:( state, action ) => {
+			state.activeProduct.size = action.payload;
+		},
+		updateActiveProductAmount:( state, action ) => {
+			state.activeProduct.amount = action.payload;
+		},
+		updateActiveProductObservations:( state, action ) => {
+			state.activeProduct.observations = action.payload;
+		},
+		removeActiveProduct: (state) => {
+			state.activeProduct.id = null;
+			state.activeProduct.name = null;
+			state.activeProduct.haveColors = false;
+			state.activeProduct.haveSizes = false;
+			state.activeProduct.color = {};
+			state.activeProduct.size = {};
+			state.activeProduct.amount = "1";
+			state.activeProduct.observations = "";
+		},
    },
 })
 
-export const { setActiveProduct } = productsSlice.actions;
+export const { setActiveProduct, 
+					updateActiveProductColor, 
+					updateActiveProductSize, 
+					updateActiveProductAmount, 
+					updateActiveProductObservations, 
+					removeActiveProduct 
+				} = productsSlice.actions;
