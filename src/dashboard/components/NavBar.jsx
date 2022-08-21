@@ -12,17 +12,17 @@ export const NavBar = () => {
 
 	const cerrarSesion = () => {
 		dispatch(logout());
-	};
+	}; 
 
 	return (
-		<Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
+		<Navbar  sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
 			<Container>
 			<Navbar.Brand as={Link} to="/">
 				SuraApp
 			</Navbar.Brand>
 
 			<Nav className="ms-auto ms-lg-0 me-2">
-				<Nav.Link  as={Link} to="/cart">
+				<Nav.Link accessKey='1'  as={Link} to="/cart">
 					Carrito
 				</Nav.Link>
 			</Nav>
@@ -33,11 +33,11 @@ export const NavBar = () => {
 			<Navbar.Collapse id="responsive-navbar-nav">
 				<Nav className="me-auto">
 
-					<Nav.Link as={Link} to="/products">
+					<Nav.Link accessKey='2' as={Link} to="/products">
 					Productos
 					</Nav.Link>
 
-					<Nav.Link as={Link} to="/stations">
+					<Nav.Link accessKey='3' as={Link} to="/stations">
 					Entrega en Estaciones
 					</Nav.Link>
 					{/* <NavDropdown

@@ -2,9 +2,11 @@ import { Row } from 'react-bootstrap';
 
 import { ProductItem } from './ProductItem';
 
-export const ProductsGroup = ({ grupoDeProductos = [] }) => {
+export const ProductsGroup = ({ grupoDeProductos = [], tipo }) => {
 
 	const { list } = grupoDeProductos;
+
+
 
 	return (
 		<>
@@ -13,7 +15,7 @@ export const ProductsGroup = ({ grupoDeProductos = [] }) => {
 			<Row xs={2} md={2} lg={3} className="g-1">
 				{
 					list.map((producto, index) => (
-						<ProductItem key={index} producto={producto} />
+						<ProductItem key={index} producto={producto} tipo={tipo} />
 					))
 				}
 			</Row>

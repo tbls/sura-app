@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setActiveProduct } from '../../store/products/productsSlice';
 import { showProductsModal } from '../../store/ui/uiSlice';
 
-export const ProductItem = ({ producto }) => {
+export const ProductItem = ({ producto, tipo }) => {
 	const dispatch = useDispatch();
 
 	const { id, name, colors, sizes } = producto;
@@ -12,6 +12,8 @@ export const ProductItem = ({ producto }) => {
 		dispatch(setActiveProduct(producto));
 		dispatch(showProductsModal());
 	};
+
+	console.log(tipo)
 
 	return (
 		<Col className='mb-3'>

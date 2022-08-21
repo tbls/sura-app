@@ -12,20 +12,26 @@ export const productsSlice = createSlice({
 				{
                id: 'faj001',
 					name: 'Cintura de avispa',
-					colors: true,
-					sizes: true,
+					haveColors: true,
+					haveSizes: true,
 				},
             {
                id: 'faj002',
 					name: '3 Velcros',
-					colors: true,
-					sizes: true,
+					haveColors: true,
+					haveSizes: true,
 				},
             {
                id: 'faj003',
 					name: '4 bandas',
-					colors: true,
-					sizes: true,
+					haveColors: true,
+					haveSizes: true,
+				},
+				{
+               id: 'faj004',
+					name: 'faja 004',
+					haveColors: true,
+					haveSizes: true,
 				},
 			],
 			},
@@ -36,20 +42,20 @@ export const productsSlice = createSlice({
 				{
 					id: 'crem001',
 					name: 'Crema 001',
-					colors: false,
-					sizes: true,
+					haveColors: false,
+					haveSizes: false,
 				},
 				{
 					id: 'crem002',
 					name: 'Crema 002',
-					colors: false,
-					sizes: true,
+					haveColors: false,
+					haveSizes: false,
 				},
 				{
 					id: 'crem003',
 					name: 'Crema 003',
-					colors: false,
-					sizes: true,
+					haveColors: false,
+					haveSizes: false,
 				},
 			],
 			},
@@ -57,8 +63,8 @@ export const productsSlice = createSlice({
 		activeProduct: {
 			id: null,
          name: null,
-			colors: null,
-         sizes: null
+			haveColors: false,
+			haveSizes: false,
 		},
 	},
 
@@ -66,8 +72,8 @@ export const productsSlice = createSlice({
       setActiveProduct: (state, action) => {
 			state.activeProduct.id = action.payload.id;
 			state.activeProduct.name = action.payload.name;
-			state.activeProduct.colors = action.payload.colors;
-			state.activeProduct.sizes = action.payload.sizes;
+			state.activeProduct.haveColors = action.payload.haveColors;
+			state.activeProduct.haveSizes = action.payload.haveSizes;
 		},
    },
 })

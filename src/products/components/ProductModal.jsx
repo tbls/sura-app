@@ -25,7 +25,16 @@ export const ProductModal = () => {
 	const ocultarModalDeEquipos = () => {
 		dispatch(hideProductsModal());
 	};
-		const { id, name, colors, sizes } = activeProduct;
+		const { id, name, haveColors, haveSizes } = activeProduct;
+
+	const agregarAlCarrito = () => {
+		console.log('agregar al carrito')
+		console.log(activeProduct);
+	}
+
+	const onColorSelectChange = (value) => {
+		console.log(value)
+	}
 
 	return (
 		<>
@@ -40,14 +49,23 @@ export const ProductModal = () => {
 						<Form.Control type="number" />
 					</Form.Group>
 					<div className='row'>
-						<Form.Group className="mb-3 col-6" controlId="exampleForm.ControlInput1">
+						{
+							haveColors &&
+							<Form.Group className="mb-3 col-6" controlId="exampleForm.ControlInput1">
 							<Form.Label>Color</Form.Label>
-							<Select options={colorOptions} />
+							<Select
+								options={colorOptions}
+								onChange={onColorSelectChange}
+							/>
 						</Form.Group>
-						<Form.Group className="mb-3 col-6" controlId="exampleForm.ControlInput1">
-							<Form.Label>Talla</Form.Label>
-							<Select options={sizeOptions} />
-						</Form.Group>
+						}
+						{
+							haveSizes &&
+							<Form.Group className="mb-3 col-6" controlId="exampleForm.ControlInput1">
+								<Form.Label>Talla</Form.Label>
+								<Select options={sizeOptions} />
+							</Form.Group>
+						}
 					</div>
 					<Form.Group
 					className="mb-3"
@@ -56,13 +74,13 @@ export const ProductModal = () => {
 					<Form.Label>Observación</Form.Label>
 					<Form.Control as="textarea" rows={3} />
 					</Form.Group>
-				</Form>
+					</Form>
 			</Modal.Body>
 			<Modal.Footer>
 				<Button variant="secondary" onClick={ocultarModalDeEquipos}>
 					Agregar cliente
 				</Button>
-				<Button variant="primary" onClick={ocultarModalDeEquipos}>
+				<Button variant="primary" onClick={agregarAlCarrito}>
 					Agregar al carrito
 				</Button>
 			</Modal.Footer>
