@@ -9,8 +9,8 @@ export const ProductsPage = () => {
     <>
       <h1 className="my-3 text-center">Lista de Productos</h1>
       {
-        products.map((products) => (
-          <ProductsGroup key={products.id} grupoDeProductos={products} />
+        products.map( products => (
+          <ProductsGroup key={products.id} grupoDeProductos={ products } />
         ))
       }
      
