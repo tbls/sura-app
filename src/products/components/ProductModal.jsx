@@ -3,24 +3,30 @@ import { useSelector } from 'react-redux';
 import Select from 'react-select';
 import { Button, Form, Modal } from 'react-bootstrap';
 import { hideProductsModal } from '../../store/ui/uiSlice';
-import { removeActiveProduct, updateActiveProductAmount, updateActiveProductColor, updateActiveProductObservations, updateActiveProductSize } from '../../store/products/productsSlice';
+import {
+  removeActiveProduct,
+  updateActiveProductAmount,
+  updateActiveProductColor,
+  updateActiveProductObservations,
+  updateActiveProductSize,
+} from '../../store/products/productsSlice';
+
+const colorOptions = [
+  { value: 'Blanco', label: 'Blanco' },
+  { value: 'Negro', label: 'Negro' },
+  { value: 'Azul', label: 'Azul' },
+];
+
+const sizeOptions = [
+  { value: 'S', label: 'S' },
+  { value: 'M', label: 'M' },
+  { value: 'L', label: 'L' },
+];
 
 export const ProductModal = () => {
   const { isProductsModalVisible } = useSelector((state) => state.ui);
   const { activeProduct } = useSelector((state) => state.products);
   const dispatch = useDispatch();
-
-  const colorOptions = [
-    { value: 'Blanco', label: 'Blanco' },
-    { value: 'Negro', label: 'Negro' },
-    { value: 'Azul', label: 'Azul' },
-  ];
-
-  const sizeOptions = [
-    { value: 'S', label: 'S' },
-    { value: 'M', label: 'M' },
-    { value: 'L', label: 'L' },
-  ];
 
   const ocultarModalDeEquipos = () => {
     dispatch(removeActiveProduct());
@@ -41,13 +47,13 @@ export const ProductModal = () => {
     dispatch(updateActiveProductSize(value));
   };
 
-  const onAmountInputChange = ({target}) => {
+  const onAmountInputChange = ({ target }) => {
     dispatch(updateActiveProductAmount(target.value));
-  }
-  const onObservationsInputChange = ({target}) => {
+  };
+  const onObservationsInputChange = ({ target }) => {
     dispatch(updateActiveProductObservations(target.value));
-  }
- 
+  };
+
   return (
     <>
       <Modal show={isProductsModalVisible} onHide={ocultarModalDeEquipos}>
@@ -58,7 +64,12 @@ export const ProductModal = () => {
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Cantidad</Form.Label>
-              <Form.Control type="number" min="1" value={amount} onChange={onAmountInputChange} />
+              <Form.Control
+                type="number"
+                min="1"
+                value={amount}
+                onChange={onAmountInputChange}
+              />
             </Form.Group>
             <div className="row">
               {haveColors && (
@@ -79,7 +90,7 @@ export const ProductModal = () => {
                   controlId="exampleForm.ControlInput1"
                 >
                   <Form.Label>Talla</Form.Label>
-                  <Select options={sizeOptions} onChange={onSizeSelectChange}/>
+                  <Select options={sizeOptions} onChange={onSizeSelectChange} />
                 </Form.Group>
               )}
             </div>
@@ -88,7 +99,12 @@ export const ProductModal = () => {
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>Observaciones</Form.Label>
-              <Form.Control as="textarea" rows={3} value={observations} onChange={onObservationsInputChange} />
+              <Form.Control
+                as="textarea"
+                rows={3}
+                value={observations}
+                onChange={onObservationsInputChange}
+              />
             </Form.Group>
           </Form>
         </Modal.Body>

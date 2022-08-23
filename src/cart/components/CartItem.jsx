@@ -1,17 +1,21 @@
 import { Button } from 'react-bootstrap';
 
 export const CartItem = ({ product, index }) => {
-  const { amount, name, color, size } = product;
+  const { amount, name, color, size, observations } = product;
 
   return (
-    <div className="d-flex justify-content-between border rounded border-primary mb-2 p-2">
-      <div className="fs-3">
-        {amount} {name} {color} {size}
+    <div className=" border rounded border-secondary mb-2 p-2">
+      <div className="d-flex justify-content-between">
+        <div className="fs-3">
+          {amount} {name} {color} {size}
+        </div>
+        <div>
+          <Button variant="danger" size="lg">
+            -
+          </Button>
+        </div>
       </div>
-      <div>
-        <Button variant="danger small">Delete</Button>
-        <Button  className="ms-1">Edit</Button>
-      </div>
+      <small>{observations}</small>
     </div>
   );
 };
