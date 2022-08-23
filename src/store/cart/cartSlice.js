@@ -26,7 +26,7 @@ export const cartSlice = createSlice({
 
   reducers: {
     setDeliveryType: (state, action) => {
-      state.setDeliveryType = action.payload;
+      state.deliveryType = action.payload;
     },
     addProductToCart: (state, action) => {
       state.products = state.products.push(action.payload);
